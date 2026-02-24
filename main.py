@@ -4,16 +4,16 @@
 
 
 
-tasks = {
+tasks = {                                                       # This is our dictionary to store tasks based on their priority categories.
 "Incidental" : [],
 "Coordinated": [],
 "Planned" : []
 }
 
 
-def add_new_task(task_name, priority):
+def add_new_task(task_name, priority):                          # This fucntion adds a new task to the appropriate category based on the priority input by the user.
     if priority == "1":
-       tasks["Incidental"].append(task_name)
+       tasks["Incidental"].append(task_name)                    # Appends is used to add the task name to the list of tasks under the "Incidental" category in the tasks dictionary. Which it also does it the other categories based on the priority input
        print(f"Task '{task_name}' added to Incidental tasks.")
     elif priority == "2":
        tasks["Coordinated"].append(task_name)
@@ -27,9 +27,9 @@ def add_new_task(task_name, priority):
 
 
 
-def display_task():
+def display_task():                                              # This function displays the current tasks in each category, showing the priority and the tasks under each category.
     print("\n--- Current To-Do List ---")
-    for priority, task_list in tasks.items():
+    for priority, task_list in tasks.items():                    # This loop iterates through each category in the tasks dictionary, printing the category name and the tasks under the category. If there are no tasks, it will say "Empty."
         print(f"\n{priority} Tasks:")
         if not task_list:
             print("(Empty)")
@@ -40,9 +40,9 @@ def display_task():
 
 
 
-def remove_task(priority, task_number):
+def remove_task(priority, task_number):                          # This function removes a task from the specified category based on the task number input by the user. It checks for valid priority and task number before removing the task.
     if priority == "1":
-        category = "Incidnetal"
+        category = "Incidental"
     elif priority == "2":
         category = "Coordinated"
     elif priority == "3":
@@ -51,11 +51,11 @@ def remove_task(priority, task_number):
         print("Invalid priority.")
         return
    
-    if 0 < task_number <= len(tasks[category]):
-        removed = tasks[category].pop(task_number - 1)
+    if 0 < task_number <= len(tasks[category]):                  # This condition checks if the task number provided by the user is within the valid range of existing tasks in the selected category. If it is valid, it proceeds to remove the task, otherwise it will say "Invalid task number."
+        removed = tasks[category].pop(task_number - 1)           # The pop is used to remove the task from the list based on the index and also returns the removed task name, which is then stored in the variable "removed".
         print(f"Task '{removed}' removed successfully")
     else:
-        print("INvalid task number.")
+        print("Invalid task number.")
 
 
 
@@ -64,7 +64,7 @@ def remove_task(priority, task_number):
 
 
 
-while True:
+while True:                                                      # This is the main Loop of the program, which continuously prompts the user for actions until they choose to exit. It handles user input for adding, removing, and displaying tasks, as well as exiting the program.
     print("\n==== TO-DO LIST MANAGER =====")
     print("1. Add Task")
     print("2, Remove Task")
@@ -72,9 +72,8 @@ while True:
     print("4. Exit")
 
 
-    choice = input("choose an option (1-4):")
-
-
+    choice = input("choose an option (1-4):")                    # This Line prompts the user to choose an option from the menu and stores their input in the variable "choice". The program will then execute the corresponding action based on the user's selection.
+ 
 
 
 
@@ -93,7 +92,7 @@ while True:
 
     elif choice == "2":
         display_task()
-        print("Select Priority Catefory: ")
+        print("Select Priority Category: ")
         print("1 - Incidental")
         print("2 - Coordinated")
         print("3 - Planned")
@@ -103,7 +102,7 @@ while True:
             remove_task(priority, task_number)
 
 
-        except ValueError:
+        except ValueError:                                       # This block catches any ValueError that occurs when the user inputs a non-integer value for the task number. It prompts the user to enter a valid number instead of crashing the program.
             print ("Please enter  valid number.")
 
 
@@ -119,5 +118,6 @@ while True:
         print("Exiting program. Goodbye!")
         break
     else:
-        print("Invalid option. Please choose 1-4.")
+        print("Invalid option. Please choose 1-4.")              # This block handles any invalid menu options entered by the user.
+
 
