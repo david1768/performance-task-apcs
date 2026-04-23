@@ -11,7 +11,7 @@ tasks = {                                                       # This is our di
 }
 
 
-def add_new_task(task_name, priority):                          # This fucntion adds a new task to the appropriate category based on the priority input by the user.
+def add_new_task(task_name, priority):                          # This function adds a new task to the appropriate category based on the priority input by the user.
     if priority == "1":
        tasks["Incidental"].append(task_name)                    # Appends is used to add the task name to the list of tasks under the "Incidental" category in the tasks dictionary. Which it also does it the other categories based on the priority input
        print(f"Task '{task_name}' added to Incidental tasks.")
@@ -119,5 +119,9 @@ while True:                                                      # This is the m
         break
     else:
         print("Invalid option. Please choose 1-4.")              # This block handles any invalid menu options entered by the user.
+
+
+
+
 
 
